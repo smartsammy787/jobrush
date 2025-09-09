@@ -1,8 +1,3 @@
-import { Button, Divider } from "@mantine/core";
-import { IconArrowLeft } from "@tabler/icons-react";
-import { Link } from "react-router-dom";
-import RecommendTalent from "../TalentProfile/RecommendTalent";
-import Profile from "../TalentProfile/Profile";
 import PJobs from "../PostJob/PJobs";
 
 const PostJob = () => {

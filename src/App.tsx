@@ -4,6 +4,7 @@ import { createTheme, Divider, MantineProvider } from "@mantine/core";
 // Only import these if you actually use these components
 import "@mantine/core/styles.css";
 import "@mantine/carousel/styles.css"; // Only if using <Carousel>
+import "@mantine/dates/styles.css";
 import HomePage from "./Pages/HomePage";
 import "@mantine/tiptap/styles.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -14,6 +15,10 @@ import FindTalent from "./Pages/FindTalent";
 import TalentProfile from "./Pages/TalentProfile";
 import PostJob from "./Pages/PostJob";
 import JobDescPage from "./Pages/JobDescPage";
+import ApplyJobPage from "./Pages/ApplyJobPage";
+import CompanyPage from "./Pages/CompanyPage";
+import PostedJobPage from "./Pages/PostedJobPage";
+import JobHistoryPage from "./Pages/JobHistoryPage";
 
 function App() {
   // const theme = {
@@ -85,17 +90,23 @@ function App() {
   return (
     <MantineProvider defaultColorScheme="dark" theme={theme}>
       <BrowserRouter>
-        <Header />
-        <Divider mx="md" size="xs" />
-        <Routes>
-          <Route path="/talent-profile" element={<TalentProfile />} />
-          <Route path="/post-job" element={<PostJob />} />
-          <Route path="/find-jobs" element={<FindJobs />} />
-          <Route path="/jobs" element={<JobDescPage />} />
-          <Route path="/find-talent" element={<FindTalent />} />
-          <Route path="*" element={<HomePage />} />
-        </Routes>
-        <Footer />
+        <div className="relative">
+          <Header />
+          <Divider mx="md" size="xs" />
+          <Routes>
+            <Route path="/talent-profile" element={<TalentProfile />} />
+            <Route path="/post-job" element={<PostJob />} />
+            <Route path="/find-jobs" element={<FindJobs />} />
+            <Route path="/jobs" element={<JobDescPage />} />
+            <Route path="/posted-job" element={<PostedJobPage />} />
+            <Route path="/apply-job" element={<ApplyJobPage />} />
+            <Route path="/job-history" element={<JobHistoryPage />} />
+            <Route path="/company" element={<CompanyPage />} />
+            <Route path="/find-talent" element={<FindTalent />} />
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+          <Footer />
+        </div>
       </BrowserRouter>
     </MantineProvider>
   );
