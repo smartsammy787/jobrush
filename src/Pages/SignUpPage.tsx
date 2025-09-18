@@ -1,14 +1,25 @@
-import { Divider } from "@mantine/core";
-import PJobs from "../PostJob/PJobs";
-import { IconBrandSwift } from "@tabler/icons-react";
-import SignUp from "../SignUp&Login/SignUp";
-import Login from "../SignUp&Login/Login";
-import { useLocation } from "react-router-dom";
+import { Button, Divider } from "@mantine/core";
+import PJobs from "../Components/PostJob/PJobs";
+import { IconArrowLeft, IconBrandSwift } from "@tabler/icons-react";
+import SignUp from "../Components/SignUp&Login/SignUp";
+import Login from "../Components/SignUp&Login/Login";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   return (
-    <div className="min-h-[90vh] bg-mine-shaft-950 font-['poppins'] overflow-hidden">
+    <div className="min-h-[90vh] bg-mine-shaft-950 font-['poppins'] overflow-hidden relative">
+      <Button
+        onClick={() => navigate("/")}
+        leftSection={<IconArrowLeft size={20} />}
+        className="!absolute left-5 z-10"
+        color="brightSun.4"
+        my="md"
+        variant="light"
+      >
+        Home
+      </Button>
       <div
         className={`w-[100vw] h-[100vh] transition-all ease-in-out duration-1000 flex [&>*]:flex-shrink-0  ${
           location.pathname == "/signup" ? "-translate-x-1/2" : "translate-x-0"

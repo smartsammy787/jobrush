@@ -1,11 +1,12 @@
 import { Button, Divider } from "@mantine/core";
-import SearchBar from "../FindTalent/SearchBar";
-import Talents from "../FindTalent/Talents";
+import SearchBar from "../Components/FindTalent/SearchBar";
+import Talents from "../Components/FindTalent/Talents";
 import { Link } from "react-router-dom";
 import { IconArrowLeft } from "@tabler/icons-react";
-import Profile from "../TalentProfile/Profile";
+
 import { profile } from "../Data/TalentData";
-import RecommendTalent from "../TalentProfile/RecommendTalent";
+import Profile from "../Components/TalentProfile/Profile";
+import RecommendTalent from "../Components/TalentProfile/RecommendTalent";
 
 const TalentProfile = () => {
   return (

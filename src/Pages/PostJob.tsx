@@ -1,4 +1,4 @@
-import PJobs from "../PostJob/PJobs";
+import PJobs from "../Components/PostJob/PJobs";
 
 const PostJob = () => {
   return (
