@@ -11,6 +11,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { loginUsers, registerUser } from "../../Services/UserService";
 import { loginValidation } from "../../Services/FormValidation";
 import { notifications } from "@mantine/notifications";
+import { useDisclosure } from "@mantine/hooks";
+import ResetPassword from "./ResetPassword";
 
 const form = {
   email: "",
@@ -20,7 +22,7 @@ const form = {
 const Login = () => {
   const [value, setValue] = useState("react");
   const [formError, setFormError] = useState<{ [key: string]: string }>(form);
-
+  const [opened, { open, close }] = useDisclosure(false);
   const [data, setData] = useState<{ [key: string]: string }>(form);
   const navigate = useNavigate();
 
@@ -72,53 +74,62 @@ const Login = () => {
     }
   };
   return (
-    <div className="w-1/2 px-20 flex flex-col justify-center gap-3">
-      <div className="text-2xl font-semibold">Create Account</div>
+    <>
+      <div className="w-1/2 px-20 flex flex-col justify-center gap-3">
+        <div className="text-2xl font-semibold">Create Account</div>
 
-      <TextInput
-        withAsterisk
-        leftSection={<IconAt size={16} />}
-        label="Email"
-        error={formError.email}
-        onChange={handleChange}
-        name="email"
-        placeholder="Your email"
-      />
-      <PasswordInput
-        leftSection={<IconLock size={18} stroke={1.5} />}
-        withAsterisk
-        label="Password"
-        error={formError.password}
-        onChange={handleChange}
-        name="password"
-        placeholder="Password"
-      />
+        <TextInput
+          withAsterisk
+          leftSection={<IconAt size={16} />}
+          label="Email"
+          error={formError.email}
+          onChange={handleChange}
+          name="email"
+          placeholder="Your email"
+        />
+        <PasswordInput
+          leftSection={<IconLock size={18} stroke={1.5} />}
+          withAsterisk
+          label="Password"
+          error={formError.password}
+          onChange={handleChange}
+          name="password"
+          placeholder="Password"
+        />
 
-      <Checkbox
-        autoContrast
-        label={
-          <>
-            I accept <Anchor>terms & conditions</Anchor>
-          </>
-        }
-      />
-      <Button onClick={handleSubmit} autoContrast variant="filled">
-        Login
-      </Button>
-      <div className="mx-auto">
-        Don't have an account?
-        <span
-          onClick={() => {
-            navigate("/signup");
-            setData(form);
-            setFormError(form);
-          }}
-          className="text-bright-sun-400 hover:underline cursor-pointer"
+        <Checkbox
+          autoContrast
+          label={
+            <>
+              I accept <Anchor>terms & conditions</Anchor>
+            </>
+          }
+        />
+        <Button onClick={handleSubmit} autoContrast variant="filled">
+          Login
+        </Button>
+        <div className="mx-auto">
+          Don't have an account?
+          <span
+            onClick={() => {
+              navigate("/signup");
+              setData(form);
+              setFormError(form);
+            }}
+            className="text-bright-sun-400 hover:underline cursor-pointer"
+          >
+            Sign Up
+          </span>
+        </div>
+        <div
+          onClick={open}
+          className="text-bright-sun-400 hover:underline cursor-pointer text-center"
         >
-          Sign Up
-        </span>
+          Forget Password?
+        </div>
       </div>
-    </div>
+      <ResetPassword opened={opened} close={close} />
+    </>
   );
 };
 

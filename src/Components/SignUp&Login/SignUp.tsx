@@ -79,6 +79,7 @@ const SignUp = () => {
         .then((res) => {
           console.log(res);
           setData(form);
+          //notification system from mantine
           notifications.show({
             title: "Registered Successfully",
             message: "Redirecting to login page...",
